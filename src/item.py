@@ -6,5 +6,5 @@ class Item:
     def describe(self):
         print("*", self.description.replace(
             self.name,
-            f"\033[1m{self.name}\033[0m")
+            f"\033[1m\033[91m{self.name}\033[0m")
         )
