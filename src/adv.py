@@ -25,14 +25,14 @@ earlier adventurers. The only exit is to the south."""),
 
 # Link rooms together
 
-room['outside'].n_to = room['foyer']
-room['foyer'].s_to = room['outside']
-room['foyer'].n_to = room['overlook']
-room['foyer'].e_to = room['narrow']
-room['overlook'].s_to = room['foyer']
-room['narrow'].w_to = room['foyer']
-room['narrow'].n_to = room['treasure']
-room['treasure'].s_to = room['narrow']
+room['outside'].n = room['foyer']
+room['foyer'].s = room['outside']
+room['foyer'].n = room['overlook']
+room['foyer'].e = room['narrow']
+room['overlook'].s = room['foyer']
+room['narrow'].w = room['foyer']
+room['narrow'].n = room['treasure']
+room['treasure'].s = room['narrow']
 
 #
 # Main
@@ -50,10 +50,26 @@ p = Player(room['outside'])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+print("Enter 'help' for a list of commands")
 while p.is_playing:
-    print(f"Current location: {p.location.name}")
+    if not p.did_err:
+        print(f"Current location: {p.location.name}")
+        print(p.location.description)
+    p.did_err = False
 
     user_input = input("What do you want to do? ").lower()
+
+    if user_input == "help":
+        print(
+            "n: move north\n"
+            "s: move south\n"
+            "e: move east\n"
+            "w: move west\n"
+            "q: quit game\n"
+        )
+
+    if user_input in ["n", "s", "e", "w"]:
+        p.move(user_input)
 
     if user_input == "q":
         p.is_playing = False
