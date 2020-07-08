@@ -5,6 +5,7 @@ class Player:
         self.is_playing = True
         self.location = location
         self.did_err = False
+        self.items = []
 
     def move(self, direction):
         if hasattr(self.location, direction):
