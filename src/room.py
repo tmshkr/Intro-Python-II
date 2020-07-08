@@ -16,7 +16,7 @@ class Room:
         if num_items == 1:
             print("There is an item visible:")
         elif num_items > 1:
-            print(f"There are {num_items} visible:")
+            print(f"There are {num_items} items visible:")
         for item in self.items:
             item.describe()
         if num_items > 0:

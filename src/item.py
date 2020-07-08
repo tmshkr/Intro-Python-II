@@ -4,4 +4,4 @@ class Item:
         self.description = description
 
     def describe(self):
-        print(self.description)
+        print("*", self.description)
