@@ -4,5 +4,7 @@ class Item:
         self.description = description
 
     def describe(self):
-        print("*", self.description.replace(self.name,
-                                            f"\033[1m{self.name}\033[0m"))
+        print("*", self.description.replace(
+            self.name,
+            f"\033[1m{self.name}\033[0m")
+        )
