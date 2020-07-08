@@ -2,13 +2,25 @@
 # description attributes.
 
 class Room:
-    def __init__(self, name, description):
+    def __init__(self, name, description, items=[]):
         self.name = name
         self.description = description
+        self.items = items
 
     def describe(self):
         print(f"Current location: {self.name}")
         print(self.description.replace("\n", " "))
+        print()
+
+        num_items = len(self.items)
+        if num_items == 1:
+            print("There is an item visible:")
+        elif num_items > 1:
+            print(f"There are {num_items} visible:")
+        for item in self.items:
+            item.describe()
+        if num_items > 0:
+            print()
 
         if hasattr(self, "n"):
             name = getattr(self, "n").name
