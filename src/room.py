@@ -1,5 +1,6 @@
 # Implement a class to hold room information. This should have name and
 # description attributes.
+
 class Room:
     def __init__(self, name, description):
         self.name = name
@@ -7,7 +8,7 @@ class Room:
 
     def describe(self):
         print(f"Current location: {self.name}")
-        print(self.description)
+        print(self.description.replace("\n", " "))
 
         if hasattr(self, "n"):
             name = getattr(self, "n").name
