@@ -76,24 +76,35 @@ while p.is_playing:
         p.location.describe()
     p.did_err = False
 
-    user_input = input("\nWhat do you want to do? ").lower()
+    user_input = input("\nWhat do you want to do? ").lower().split(" ")
     print("")
 
-    if user_input == "help":
-        print(
-            "n: move north\n"
-            "s: move south\n"
-            "e: move east\n"
-            "w: move west\n"
-            "q: quit game\n"
-        )
+    if len(user_input) == 1:
+        user_input = user_input[0]
+        if user_input == "help":
+            print(
+                "n: move north\n"
+                "s: move south\n"
+                "e: move east\n"
+                "w: move west\n"
+                "get [object]: pick up an object\n"
+                "drop [object]: drop an object\n"
+                "q: quit game\n"
+            )
 
-    elif user_input in ["n", "s", "e", "w"]:
-        p.move(user_input)
+        elif user_input in ["n", "s", "e", "w"]:
+            p.move(user_input)
 
-    elif user_input == "q":
-        p.is_playing = False
-        print("Goodbye")
+        elif user_input == "q":
+            p.is_playing = False
+            print("Goodbye")
+
+        else:
+            p.did_err = True
+            print("Invalid input")
+
+    elif len(user_input) == 2:
+        print("verb object")
 
     else:
         p.did_err = True
