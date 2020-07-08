@@ -4,7 +4,7 @@ class Player:
     def __init__(self, location):
         self.is_playing = True
         self.location = location
-        self.did_err = True
+        self.did_err = False
 
     def move(self, direction):
         if hasattr(self.location, direction):
