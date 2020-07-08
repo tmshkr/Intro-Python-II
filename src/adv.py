@@ -68,9 +68,13 @@ while p.is_playing:
             "q: quit game\n"
         )
 
-    if user_input in ["n", "s", "e", "w"]:
+    elif user_input in ["n", "s", "e", "w"]:
         p.move(user_input)
 
-    if user_input == "q":
+    elif user_input == "q":
         p.is_playing = False
         print("Goodbye")
+
+    else:
+        p.did_err = True
+        print("Invalid input")
