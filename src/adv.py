@@ -53,11 +53,11 @@ p = Player(room['outside'])
 print("Enter 'help' for a list of commands")
 while p.is_playing:
     if not p.did_err:
-        print(f"Current location: {p.location.name}")
-        print(p.location.description)
+        p.location.describe()
     p.did_err = False
 
-    user_input = input("What do you want to do? ").lower()
+    user_input = input("\nWhat do you want to do? ").lower()
+    print("")
 
     if user_input == "help":
         print(
