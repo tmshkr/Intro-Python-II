@@ -29,9 +29,14 @@ class Item:
 class LightSource(Item):
     def __init__(self, name, description):
         super().__init__(name, description)
+        self.is_illuminated = False
 
     def on_drop(self):
         print("It's not wise to drop your source of light!")
 
     def use(self):
-        print("use LightSource")
+        self.is_illuminated = not self.is_illuminated
+        if self.is_illuminated:
+            print(f"{self.name} is illuminated")
+        else:
+            print(f"{self.name} is not illuminated")

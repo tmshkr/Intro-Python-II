@@ -47,3 +47,39 @@ class Player:
                     f"* \033[1m\033[91m{item.name}\033[0m {item.description}")
         else:
             print("You don't have any items in your inventory")
+
+    def describe_location(self):
+        location = self.location
+        if not location.is_illuminated:
+            light_sources = filter(
+                lambda i: i.__class__.__name__ == "LightSource" and i.is_illuminated, self.items)
+            if len(list(light_sources)) == 0:
+                print("It's pitch black!")
+                return
+
+        print(f"Current location: {location.name}")
+        print(location.description.replace("\n", " "))
+        print()
+
+        num_items = len(location.items)
+        if num_items == 1:
+            print("There is an item visible:")
+        elif num_items > 1:
+            print(f"There are {num_items} items visible:")
+        for item in location.items:
+            item.describe()
+        if num_items > 0:
+            print()
+
+        if hasattr(location, "n"):
+            name = getattr(location, "n").name
+            print(f"To the North: {name}")
+        if hasattr(location, "s"):
+            name = getattr(location, "s").name
+            print(f"To the South: {name}")
+        if hasattr(location, "e"):
+            name = getattr(location, "e").name
+            print(f"To the East: {name}")
+        if hasattr(location, "w"):
+            name = getattr(location, "w").name
+            print(f"To the West: {name}")

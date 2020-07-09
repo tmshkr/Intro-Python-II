@@ -41,7 +41,9 @@ earlier adventurers. The only exit is to the south.""", [
             createItem("map", "a treasure map"),
             createItem(
                 "compass", "a compass, with an indiscernible inscription")
-        ]),
+        ],
+        is_illuminated=False
+    )
 }
 
 
@@ -75,7 +77,7 @@ p = Player(room['outside'])
 print("Enter 'help' for a list of commands")
 while p.is_playing:
     if p.did_move:
-        p.location.describe()
+        p.describe_location()
         p.did_move = False
 
     user_input = input(
@@ -102,7 +104,7 @@ while p.is_playing:
             p.move(user_input)
 
         elif user_input == "d":
-            p.location.describe()
+            p.describe_location()
 
         elif user_input in ["i", "inventory"]:
             p.inventory()
