@@ -1,6 +1,6 @@
 from room import Room
 from player import Player
-from item import Item
+from item import createItem
 
 # Declare all the rooms
 
@@ -8,15 +8,16 @@ room = {
     'outside':  Room(
         "Outside Cave Entrance",
         "North of you, the cave mount beckons", [
-            Item("stone", "a smooth and round stone")
+            createItem("stone", "a smooth and round stone")
         ]),
 
     'foyer':    Room(
         "Foyer",
         """Dim light filters in from the south. Dusty
 passages run north and east.""", [
-            Item("lantern", "an old lantern, seems to have been used recently"),
-            Item("oil", "a canister of oil, perhaps for the lantern")]
+            createItem(
+                "lantern", "an old lantern, seems to have been used recently"),
+            createItem("oil", "a canister of oil, perhaps for the lantern")]
     ),
 
     'overlook': Room(
@@ -37,8 +38,9 @@ to north. The smell of gold permeates the air."""
         """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south.""", [
-            Item("map", "a treasure map"),
-            Item("compass", "a compass, with an indiscernible inscription")
+            createItem("map", "a treasure map"),
+            createItem(
+                "compass", "a compass, with an indiscernible inscription")
         ]),
 }
 
@@ -91,6 +93,7 @@ while p.is_playing:
                 "d: describe location\n"
                 "get [item_name]: pick up an item\n"
                 "drop [item_name]: drop an item\n"
+                "use [item_name]: use an item\n"
                 "i: list items in your inventory\n"
                 "q: quit game\n"
             )
@@ -117,6 +120,9 @@ while p.is_playing:
 
         elif user_input[0] == "drop":
             p.drop(user_input[1])
+
+        elif user_input[0] == "use":
+            p.use_item(user_input[1])
 
         else:
             print("Invalid input")
