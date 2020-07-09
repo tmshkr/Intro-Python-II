@@ -74,7 +74,7 @@ print("Enter 'help' for a list of commands")
 while p.is_playing:
     if p.did_move:
         p.location.describe()
-    p.did_move = False
+        p.did_move = False
 
     user_input = input("\nWhat do you want to do? ").lower().split(" ")
     print("")

@@ -15,5 +15,10 @@ class Player:
             print("There is nothing in that direction")
 
     def take(self, item_name):
-        if item_name in map(lambda item: item.name, self.location.items):
-            print("item is in this location")
+        for index, item in enumerate(self.location.items):
+            if item.name == item_name:
+                self.items.append(item)
+                self.location.items.pop(index)
+                print(f"You took the {item_name}")
+                return
+        print(f"There is no {item_name} here")
