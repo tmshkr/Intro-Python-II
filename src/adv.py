@@ -72,9 +72,9 @@ p = Player(room['outside'])
 # If the user enters "q", quit the game.
 print("Enter 'help' for a list of commands")
 while p.is_playing:
-    if not p.did_err:
+    if p.did_move:
         p.location.describe()
-    p.did_err = False
+    p.did_move = False
 
     user_input = input("\nWhat do you want to do? ").lower().split(" ")
     print("")
@@ -104,7 +104,11 @@ while p.is_playing:
             print("Invalid input")
 
     elif len(user_input) == 2:
-        print("verb object")
+        if user_input[0] in ["get", "take"]:
+            p.take(user_input[1])
+        else:
+            p.did_err = True
+            print("Invalid input")
 
     else:
         p.did_err = True
