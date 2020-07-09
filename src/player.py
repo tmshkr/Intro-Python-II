@@ -36,6 +36,7 @@ class Player:
         if len(self.items) > 0:
             print("You have these items in your inventory:")
             for item in self.items:
-                print(f"{item.name}: {item.description}")
+                print(
+                    f"* \033[1m\033[91m{item.name}\033[0m {item.description}")
         else:
             print("You don't have any items in your inventory")

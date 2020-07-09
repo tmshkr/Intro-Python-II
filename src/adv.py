@@ -89,8 +89,8 @@ while p.is_playing:
                 "e: move east\n"
                 "w: move west\n"
                 "d: describe location\n"
-                "get [object]: pick up an object\n"
-                "drop [object]: drop an object\n"
+                "get [item_name]: pick up an item\n"
+                "drop [item_name]: drop an item\n"
                 "i: list items in your inventory\n"
                 "q: quit game\n"
             )
@@ -109,7 +109,6 @@ while p.is_playing:
             print("Goodbye")
 
         else:
-            p.did_err = True
             print("Invalid input")
 
     elif len(user_input) == 2:
@@ -120,9 +119,7 @@ while p.is_playing:
             p.drop(user_input[1])
 
         else:
-            p.did_err = True
             print("Invalid input")
 
     else:
-        p.did_err = True
         print("Invalid input")
