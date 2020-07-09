@@ -19,6 +19,14 @@ class Player:
             if item.name == item_name:
                 self.items.append(item)
                 self.location.items.pop(index)
-                print(f"You took the {item_name}")
+                item.on_take()
                 return
         print(f"There is no {item_name} here")
+
+    def inventory(self):
+        if len(self.items) > 0:
+            print("You have these items in your inventory:")
+            for item in self.items:
+                print(f"{item.name}: {item.description}")
+        else:
+            print("You don't have any items in your inventory")

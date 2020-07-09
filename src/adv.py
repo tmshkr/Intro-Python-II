@@ -89,11 +89,15 @@ while p.is_playing:
                 "w: move west\n"
                 "get [object]: pick up an object\n"
                 "drop [object]: drop an object\n"
+                "i: list items in your inventory\n"
                 "q: quit game\n"
             )
 
         elif user_input in ["n", "s", "e", "w"]:
             p.move(user_input)
+
+        elif user_input == "i":
+            p.inventory()
 
         elif user_input == "q":
             p.is_playing = False
