@@ -23,6 +23,15 @@ class Player:
                 return
         print(f"There is no {item_name} here")
 
+    def drop(self, item_name):
+        for index, item in enumerate(self.items):
+            if item.name == item_name:
+                self.location.items.append(item)
+                self.items.pop(index)
+                item.on_drop()
+                return
+        print(f"There is no {item_name} in your inventory")
+
     def inventory(self):
         if len(self.items) > 0:
             print("You have these items in your inventory:")

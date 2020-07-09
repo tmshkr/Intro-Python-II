@@ -76,7 +76,8 @@ while p.is_playing:
         p.location.describe()
         p.did_move = False
 
-    user_input = input("\nWhat do you want to do? ").lower().split(" ")
+    user_input = input(
+        "\n\033[1mWhat do you want to do?\033[0m ").lower().split(" ")
     print("")
 
     if len(user_input) == 1:
@@ -100,7 +101,7 @@ while p.is_playing:
         elif user_input == "d":
             p.location.describe()
 
-        elif user_input == "i":
+        elif user_input in ["i", "inventory"]:
             p.inventory()
 
         elif user_input == "q":
@@ -114,6 +115,10 @@ while p.is_playing:
     elif len(user_input) == 2:
         if user_input[0] in ["get", "take"]:
             p.take(user_input[1])
+
+        elif user_input[0] == "drop":
+            p.drop(user_input[1])
+
         else:
             p.did_err = True
             print("Invalid input")
