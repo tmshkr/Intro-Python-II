@@ -87,6 +87,7 @@ while p.is_playing:
                 "s: move south\n"
                 "e: move east\n"
                 "w: move west\n"
+                "d: describe location\n"
                 "get [object]: pick up an object\n"
                 "drop [object]: drop an object\n"
                 "i: list items in your inventory\n"
@@ -95,6 +96,9 @@ while p.is_playing:
 
         elif user_input in ["n", "s", "e", "w"]:
             p.move(user_input)
+
+        elif user_input == "d":
+            p.location.describe()
 
         elif user_input == "i":
             p.inventory()
