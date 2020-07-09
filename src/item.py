@@ -8,3 +8,6 @@ class Item:
             self.name,
             f"\033[1m\033[91m{self.name}\033[0m")
         )
+
+    def on_take(self):
+        print(f"You have picked up {self.name}")
